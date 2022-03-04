@@ -1,5 +1,6 @@
 package com.cursojava.curso.controllers;
 
+import com.cursojava.curso.dao.UsuarioDao;
 import com.cursojava.curso.models.Usuario;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class UsuarioController {
+public class UsuarioController implements UsuarioDao {
 
     @RequestMapping(value="usuarios")
     public List<Usuario> getUsuarios(){
