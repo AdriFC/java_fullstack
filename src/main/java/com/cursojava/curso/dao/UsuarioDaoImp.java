@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-
 public class UsuarioDaoImp implements UsuarioDao {
 
     @PersistenceContext
@@ -20,7 +19,13 @@ public class UsuarioDaoImp implements UsuarioDao {
     @Override
     public List<Usuario> getUsuarios() {
         String query = "FROM Usuario";
-        return entitymanager.createNamedQuery(query).getResultList();
+        return entitymanager.createQuery(query).getResultList();
+    }
+
+
+    public void eliminar(Long id) {
+        Usuario usuario = entitymanager.find(Usuario.class, id);
+        entitymanager.remove(usuario);
     }
 
 }
