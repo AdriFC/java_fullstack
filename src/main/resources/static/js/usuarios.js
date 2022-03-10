@@ -21,6 +21,7 @@ async function cargarUsuarios(){
 
       let usuariohTML = '<tr><td>'+ usuario.id +'</td><td>'+ usuario.nombre +''+ usuario.apellido +'</td><td>'
                         + usuario.email +'</td><td>'+ usuario.telefono +'</td><td>' + botonEliminar + '</td></tr>';
+
       listadoHtml += usuariohTML;
   }
 
@@ -28,6 +29,18 @@ async function cargarUsuarios(){
 
 }
 
-function eliminarUsuario(id) {
-    alert(id);
+async function eliminarUsuario(id) {
+
+    if (!confirm('¿Desea eliminar este usuario?')){
+        return;
+    }
+
+    const request = await fetch('api/usuarios/' +id, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+    });
+    location.reload();
 }
