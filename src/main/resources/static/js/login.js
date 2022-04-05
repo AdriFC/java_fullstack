@@ -18,7 +18,9 @@ async function iniciarSesion(){
   });
 
   const respuesta = await request.text();
-  if (respuesta == 'ok') {
+  if (respuesta != 'FAIL') {
+  localStorage.token = respuesta;
+  localStorage.email = datos.email;
   window.location.href = 'usuarios.html'
   } else {
     alert("Inicio de sesión incorrecto. Por favor, inténtalo de nuevo")
